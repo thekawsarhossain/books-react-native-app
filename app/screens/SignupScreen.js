@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 
 
-function LoginScreen() {
+function SignupScreen() {
 
-    // context api data here 
-    const { signIn } = useAuth();
+    const { createUser } = useAuth();
 
     const navigate = useNavigate();
 
     // states 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,7 +22,12 @@ function LoginScreen() {
 
             {/* main content of login here  */}
             <View style={styles.container}>
-                <Text style={styles.title}>Login Here</Text>
+                <Text style={styles.title}>Signup Here</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder='Enter Name'
+                    onChangeText={(name) => setName(name)}
+                />
                 <TextInput
                     style={styles.input}
                     placeholder='Enter Email'
@@ -34,7 +39,7 @@ function LoginScreen() {
                     placeholder='Enter Password'
                     onChangeText={(password) => setPassword(password)}
                 />
-                <Button title='login' color={colors.pinkRed} onPress={() => signIn(email, password, navigate)} />
+                <Button title='Signup' color={colors.pinkRed} onPress={() => createUser(name, email, password, navigate)} />
             </View>
 
         </View>
@@ -62,10 +67,10 @@ const styles = StyleSheet.create({
     input: {
         width: '80%',
         height: 50,
-        marginBottom: 15,
+        marginTop: 10,
         borderWidth: 1,
         padding: 10,
     }
 });
 
-export default LoginScreen;
+export default SignupScreen;

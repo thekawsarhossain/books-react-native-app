@@ -17,7 +17,7 @@ function WelcomeScreen() {
             {/* login and signup button here  */}
             <View style={styles.buttons}>
                 <Button onPress={() => navigate('/login')} color={colors.primary} title='Login' />
-                <Button onPress={() => navigate('/login')} color={colors.pinkRed} title='Signup' />
+                <Button onPress={() => navigate('/signup')} color={colors.pinkRed} title='Signup' />
             </View>
         </View>
     );
