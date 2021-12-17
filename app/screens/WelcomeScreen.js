@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Image, StyleSheet, Text, View, Alert } from 'react-native';
-import { useNavigate } from 'react-router';
 import book from '../assets/images/book.png';
+import { useNavigate } from "react-router";
 import colors from '../config/colors';
 
 function WelcomeScreen() {
@@ -16,8 +16,8 @@ function WelcomeScreen() {
 
             {/* login and signup button here  */}
             <View style={styles.buttons}>
-                <Button onPress={() => navigate("/login")} color={colors.primary} title='Login' />
-                <Button color={colors.pinkRed} title='Signup' />
+                <Button onPress={() => navigate('/login')} color={colors.primary} title='Login' />
+                <Button onPress={() => navigate('/login')} color={colors.pinkRed} title='Signup' />
             </View>
         </View>
     );
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     title1: {
         fontSize: 28,
