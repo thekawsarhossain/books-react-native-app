@@ -1,20 +1,21 @@
 import { ActivityIndicator } from '@react-native-material/core';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ScrollView } from 'react-native';
+import { useParams } from 'react-router';
 import colors from '../../config/colors';
-import BookScreen from './BookScreen';
+import NavigationScreen from './NavigationScreen';
 
-function BooksScreen() {
+function BookInformation() {
 
-    const [books, setBooks] = useState([]);
+    const { id } = useParams();
+    const [book, setBook] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const getBooks = async () => {
+    const getBook = async () => {
         try {
-            const response = await fetch('https://mighty-ocean-62001.herokuapp.com/books');
+            const response = await fetch(`https://mighty-ocean-62001.herokuapp.com/book/${id}`);
             const json = await response.json();
-            setBooks(json);
+            setBook(json);
         } catch (error) {
             console.error(error);
         }
@@ -22,31 +23,26 @@ function BooksScreen() {
     }
 
     useEffect(() => {
-        getBooks();
-    }, []);
+        getBook();
+    }, [id]);
 
     if (loading) {
         return <View style={styles.loading}><ActivityIndicator size="large" color={colors.primary} /></View>
     }
 
     return (
-        <ScrollView>
-            <View style={styles.parent}>
-                {
-                    books?.map((book) => <BookScreen
-                        key={book._id}
-                        books={book}
-                    />)
-                }
-            </View>
-        </ScrollView>
+        <View style={styles.container}>
+            <Text>the id is {id}, {book.title}</Text>
+            <NavigationScreen />
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    parent: {
+    container: {
         flex: 1,
-        marginVertical: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     loading: {
         flex: 1,
@@ -55,4 +51,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default BooksScreen;
+
+export default BookInformation;

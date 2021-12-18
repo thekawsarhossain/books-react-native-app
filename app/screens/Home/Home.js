@@ -2,16 +2,16 @@ import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import useAuth from '../../Hooks/useAuth';
 import BooksScreen from './BooksScreen';
+import NavigationScreen from './NavigationScreen';
 
 function Home() {
 
-    const { user, logoutUser } = useAuth();
+    const { user } = useAuth();
 
     return (
         <View style={styles.container}>
-            <Button title='logout' onPress={logoutUser} />
-            <Text>Hello This is Home {user.displayName}</Text>
             <BooksScreen />
+            <NavigationScreen />
         </View>
     );
 }

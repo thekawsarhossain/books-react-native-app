@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import colors from '../config/colors';
 import { useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
+import { AppBar, FAB, IconButton } from '@react-native-material/core';
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 
 function LoginScreen() {
 
     // context api data here 
-    const { signIn, error } = useAuth();
+    const { signIn, error, user } = useAuth();
 
     const navigate = useNavigate();
 
@@ -18,7 +20,6 @@ function LoginScreen() {
 
     return (
         <View style={styles.background}>
-            <Button onPress={() => navigate('/')} color={colors.primary} title='home' />
 
             {/* main content of login here  */}
             <View style={styles.container}>
@@ -36,10 +37,22 @@ function LoginScreen() {
                 />
                 <Button title='login' color={colors.pinkRed} onPress={() => signIn(email, password, navigate)} />
 
-                {/* 
-                <Text style={styles.or}>OR</Text> */}
+                <AppBar
+                    color={colors.primary}
+                    variant="bottom"
+                    style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
+                >
+                    <FAB
+                        onPress={() => navigate('/')}
+                        icon={props => <Icon name="home" {...props} />}
+                        style={{ position: "absolute", top: -28, alignSelf: "center" }}
+                    />
+                </AppBar>
 
-                {/* {error && <Text>{error}</Text>} */}
+                {/* alert box here  */}
+                <View>
+                    <Text style={styles.alertbar}>{error && error}</Text>
+                </View>
 
             </View>
 
@@ -76,6 +89,10 @@ const styles = StyleSheet.create({
         margin: 15,
         fontWeight: 'bold',
         fontSize: 18
+    },
+    alertbar: {
+        marginTop: 15,
+        color: colors.red
     }
 });
 

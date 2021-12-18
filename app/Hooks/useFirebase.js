@@ -18,7 +18,6 @@ const useFirebase = () => {
 
     // create user with email and password here 
     const createUser = (name, email, password, navigate) => {
-        setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 updateUserProfile(name);
@@ -32,7 +31,6 @@ const useFirebase = () => {
 
     // sign in existing user here 
     const signIn = (email, password, navigate) => {
-        setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setUser(result.user);
@@ -67,17 +65,17 @@ const useFirebase = () => {
 
 
     // google sign in here 
-    const signInWithGoogle = navigate => {
-        setLoading(true)
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user);
-                setError('');
-                navigate("/home");
-            })
-            .catch(error => setError(error.message))
-            .finally(() => setLoading(false))
-    }
+    // const signInWithGoogle = navigate => {
+    //     setLoading(true)
+    //     signInWithPopup(auth, googleProvider)
+    //         .then(result => {
+    //             setUser(result.user);
+    //             setError('');
+    //             navigate("/home");
+    //         })
+    //         .catch(error => setError(error.message))
+    //         .finally(() => setLoading(false))
+    // }
 
     // log out user here 
     const logoutUser = () => {
@@ -96,7 +94,7 @@ const useFirebase = () => {
         signIn,
         loading,
         logoutUser,
-        signInWithGoogle,
+        // signInWithGoogle,
     }
 }
 

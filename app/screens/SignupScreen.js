@@ -3,11 +3,13 @@ import { StyleSheet, Button, Text, View, TextInput } from 'react-native';
 import colors from '../config/colors';
 import { useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
+import { AppBar, FAB } from '@react-native-material/core';
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 
 function SignupScreen() {
 
-    const { createUser } = useAuth();
+    const { createUser, error } = useAuth();
 
     const navigate = useNavigate();
 
@@ -18,7 +20,6 @@ function SignupScreen() {
 
     return (
         <View style={styles.background}>
-            <Button onPress={() => navigate('/')} color={colors.primary} title='home' />
 
             {/* main content of login here  */}
             <View style={styles.container}>
@@ -40,6 +41,24 @@ function SignupScreen() {
                     onChangeText={(password) => setPassword(password)}
                 />
                 <Button title='Signup' color={colors.pinkRed} onPress={() => createUser(name, email, password, navigate)} />
+
+                <AppBar
+                    color={colors.primary}
+                    variant="bottom"
+                    style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
+                >
+                    <FAB
+                        onPress={() => navigate('/')}
+                        icon={props => <Icon name="home" {...props} />}
+                        style={{ position: "absolute", top: -28, alignSelf: "center" }}
+                    />
+                </AppBar>
+
+                {/* alert box here  */}
+                <View>
+                    <Text style={styles.alertbar}>{error && error}</Text>
+                </View>
+
             </View>
 
         </View>
@@ -70,6 +89,10 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderWidth: 1,
         padding: 10,
+    },
+    alertbar: {
+        marginTop: 15,
+        color: colors.red
     }
 });
 

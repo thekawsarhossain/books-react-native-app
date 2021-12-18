@@ -1,3 +1,4 @@
+import { ActivityIndicator } from '@react-native-material/core';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Navigate, useLocation } from 'react-router';
@@ -13,9 +14,7 @@ const PrivateScreen = ({ children }) => {
 
     // loading statement here 
     if (loading) {
-        return <View>
-            <Text>Kawsar's app</Text>
-        </View>
+        return <View style={styles.loading}><ActivityIndicator size="large" color={colors.primary} /></View>
     }
 
     // main private route setup here
