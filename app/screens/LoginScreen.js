@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import colors from '../config/colors';
 import { useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
@@ -8,7 +8,7 @@ import useAuth from '../Hooks/useAuth';
 function LoginScreen() {
 
     // context api data here 
-    const { signIn } = useAuth();
+    const { signIn, error } = useAuth();
 
     const navigate = useNavigate();
 
@@ -35,6 +35,12 @@ function LoginScreen() {
                     onChangeText={(password) => setPassword(password)}
                 />
                 <Button title='login' color={colors.pinkRed} onPress={() => signIn(email, password, navigate)} />
+
+                {/* 
+                <Text style={styles.or}>OR</Text> */}
+
+                {/* {error && <Text>{error}</Text>} */}
+
             </View>
 
         </View>
@@ -65,6 +71,11 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderWidth: 1,
         padding: 10,
+    },
+    or: {
+        margin: 15,
+        fontWeight: 'bold',
+        fontSize: 18
     }
 });
 

@@ -10,7 +10,7 @@ function WelcomeScreen() {
 
     return (
         <View style={styles.background} >
-            <Text style={styles.title1}>Hey There ! </Text>
+            <Text style={styles.title1}>Hey There ! Welcome</Text>
             <Text style={styles.title2}> Just Login or Signup to read Books.</Text>
             <Image style={styles.image} resizeMode='contain' source={book} />
 

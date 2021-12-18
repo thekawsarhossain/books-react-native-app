@@ -1,8 +1,7 @@
 import { StyleSheet, View, StatusBar } from 'react-native';
 import { NativeRouter, Routes, Route } from 'react-router-native';
 import AuthProvider from './app/Context/AuthProvider';
-import Home from './app/screens/Home';
-
+import Home from './app/screens/Home/Home';
 import LoginScreen from './app/screens/LoginScreen';
 import PrivateScreen from './app/screens/PrivateScreen';
 import SignupScreen from './app/screens/SignupScreen';
