@@ -12,7 +12,7 @@ function BookInformation() {
     const [book, setBook] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const { author, coverImage, pageCount, publisher, title, synopsis } = book;
+    const { author, coverImage, pageCount, publisher, title, synopsis, price } = book;
 
     const getBook = async () => {
         try {
@@ -43,6 +43,7 @@ function BookInformation() {
                     <Text style={styles.author}>Author: {author}</Text>
                     <Text>Total Page: {pageCount}</Text>
                     <Text>Publisher: {publisher}</Text>
+                    <Text>Price: {price}</Text>
                     <Text style={styles.overview}><Text style={styles.span}>Overview:</Text> {synopsis}</Text>
                     <Button title="Buy now" color={colors.primary} />
                 </View>

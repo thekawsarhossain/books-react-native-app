@@ -1,12 +1,17 @@
-import { ActivityIndicator, Button } from '@react-native-material/core';
+import { ActivityIndicator, Button, Snackbar } from '@react-native-material/core';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import { clear } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+import { useNavigate } from 'react-router';
 import colors from '../../config/colors';
 import NavigationScreen from './NavigationScreen';
 
 function PublishBook() {
 
+    // react router native hook
+    const navigate = useNavigate();
+
+    // all the hooks of input data here 
     const [loading, setLoading] = useState(false)
     const [coverImage, setCoverImage] = useState('');
     const [author, setAuthor] = useState('');
@@ -29,16 +34,25 @@ function PublishBook() {
                 body: JSON.stringify(bookData)
             });
             const json = await response.json();
-            console.log(json)
+            if (json.insertedId) {
+                return Alert.alert(
+                    "Success !",
+                    "Hey there you book is published now go to the home page you can find your book there !",
+                    [
+                        {
+                            text: "Home",
+                            onPress: () => navigate('/home'),
+                            // style: "cancel"
+                        },
+                        { text: "OK", onPress: () => console.log("OK Pressed") },
+                    ]
+                );
+            }
 
         } catch (error) {
             console.error(error);
         }
         finally { setLoading(false) }
-    }
-
-    if (loading) {
-        return <View style={styles.loading}><ActivityIndicator size="large" color={colors.primary} /></View>
     }
 
     return (
@@ -81,7 +95,12 @@ function PublishBook() {
                 placeholder='price'
                 onChangeText={(price) => setPrice(price)}
             />
-            <Button onPress={handlePublish} title="Publish" color={colors.primary} />
+            {!loading ? <Button onPress={handlePublish} title="Publish" color={colors.primary} /> : <Button
+                title="Button"
+                loading={loading}
+                loadingIndicatorPosition="overlay"
+                color={colors.primary}
+            />}
             <NavigationScreen />
         </View>
     );
