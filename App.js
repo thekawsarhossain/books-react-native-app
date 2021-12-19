@@ -2,8 +2,10 @@ import { StyleSheet, View, StatusBar } from 'react-native';
 import { NativeRouter, Routes, Route } from 'react-router-native';
 import AuthProvider from './app/Context/AuthProvider';
 import BookInformation from './app/screens/Home/BookInformation';
+import CartScreen from './app/screens/Home/CartScreen';
 import Home from './app/screens/Home/Home';
 import ProfileScreen from './app/screens/Home/ProfileScreen';
+import PublishBook from './app/screens/Home/PublishBook';
 import LoginScreen from './app/screens/LoginScreen';
 import PrivateScreen from './app/screens/PrivateScreen';
 import SignupScreen from './app/screens/SignupScreen';
@@ -22,6 +24,8 @@ export default function App() {
             <Route path="/home" element={<PrivateScreen><Home /></PrivateScreen>} />
             <Route path="/profile" element={<PrivateScreen><ProfileScreen /></PrivateScreen>} />
             <Route path="/book/:id" element={<PrivateScreen><BookInformation /></PrivateScreen>} />
+            <Route path="/cart" element={<PrivateScreen><CartScreen /></PrivateScreen>} />
+            <Route path="/publish-new" element={<PrivateScreen><PublishBook /></PrivateScreen>} />
           </Routes>
         </NativeRouter>
       </AuthProvider>
