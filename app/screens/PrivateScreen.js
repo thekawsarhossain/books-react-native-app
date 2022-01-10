@@ -1,7 +1,8 @@
 import { ActivityIndicator } from '@react-native-material/core';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigate, useLocation } from 'react-router';
+import colors from '../config/colors';
 import useAuth from '../Hooks/useAuth';
 
 const PrivateScreen = ({ children }) => {
@@ -24,5 +25,15 @@ const PrivateScreen = ({ children }) => {
         return <Navigate to="/login" state={{ from: location }} />
     }
 };
+
+
+
+const styles = StyleSheet.create({
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})
 
 export default PrivateScreen;
