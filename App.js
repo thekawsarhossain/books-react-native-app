@@ -10,6 +10,7 @@ import LoginScreen from './app/screens/LoginScreen';
 import PrivateScreen from './app/screens/PrivateScreen';
 import SignupScreen from './app/screens/SignupScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import PoemsScreen from './app/screens/Home/PoemsScreen';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/book/:id" element={<PrivateScreen><BookInformation /></PrivateScreen>} />
             <Route path="/cart" element={<PrivateScreen><CartScreen /></PrivateScreen>} />
             <Route path="/publish-new" element={<PrivateScreen><PublishBook /></PrivateScreen>} />
+            <Route path="/free" element={<PrivateScreen><PoemsScreen /></PrivateScreen>} />
           </Routes>
         </NativeRouter>
       </AuthProvider>

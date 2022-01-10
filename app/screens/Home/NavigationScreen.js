@@ -21,6 +21,11 @@ function NavigationScreen() {
                 <HStack style={styles.bars}>
                     <IconButton onPress={() => navigate('/home')} icon={props => <Icon name="home" {...props} />} {...props} />
                     <IconButton
+                        onPress={() => navigate('/free')}
+                        icon={props => <Icon name="book" {...props} />}
+                        {...props}
+                    />
+                    <IconButton
                         onPress={() => navigate('/publish-new')}
                         icon={props => <Icon name="plus" {...props} />}
                         {...props}
@@ -45,9 +50,10 @@ function NavigationScreen() {
 
 const styles = StyleSheet.create({
     bars: {
-        width: '90%',
+        width: '96%',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginLeft: -15
     }
 })
 
