@@ -1,6 +1,6 @@
 import { ActivityIndicator } from '@react-native-material/core';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Navigate, useLocation } from 'react-router';
 import colors from '../config/colors';
 import useAuth from '../Hooks/useAuth';
