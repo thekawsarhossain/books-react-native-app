@@ -101,6 +101,9 @@ function PublishBook() {
                 loadingIndicatorPosition="overlay"
                 color={colors.primary}
             />}
+
+            <Button style={styles.poemBtn} onPress={() => navigate('/publish-poem')} title="publish a poem" />
+
             <NavigationScreen />
         </View>
     );
@@ -128,7 +131,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
-    }
+    },
+    poemBtn: {
+        fontSize: 16,
+        marginTop: 20,
+        backgroundColor: colors.pinkRed
+    },
 })
 
 export default PublishBook;

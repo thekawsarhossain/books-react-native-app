@@ -21,7 +21,7 @@ function NavigationScreen() {
                 <HStack style={styles.bars}>
                     <IconButton onPress={() => navigate('/home')} icon={props => <Icon name="home" {...props} />} {...props} />
                     <IconButton
-                        onPress={() => navigate('/free')}
+                        onPress={() => navigate('/poems')}
                         icon={props => <Icon name="book" {...props} />}
                         {...props}
                     />
